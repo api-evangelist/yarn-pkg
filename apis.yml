@@ -1,0 +1,376 @@
+aid: yarn-pkg
+url: https://raw.githubusercontent.com/api-evangelist/yarn-pkg/refs/heads/main/apis.yml
+apis:
+- aid: yarn-pkg:yarn-cli
+  name: Yarn CLI
+  tags:
+  - CLI
+  - Package Manager
+  - JavaScript
+  - Node.js
+  - Workspaces
+  humanURL: https://yarnpkg.com/cli
+  properties:
+  - url: https://yarnpkg.com/cli
+    type: Documentation
+  - url: https://yarnpkg.com/getting-started/install
+    type: GettingStarted
+  - url: https://github.com/yarnpkg/berry/tree/master/packages/yarnpkg-cli
+    type: SourceCode
+  - url: https://github.com/yarnpkg/berry
+    type: SourceCode
+  - url: vocabulary/yarn-pkg-vocabulary.yml
+    type: Vocabulary
+  - url: json-ld/yarn-pkg-context.jsonld
+    type: JSONLD
+  description: The Yarn command-line interface — `yarn` — provides install, add, remove, up, run, exec, dlx, info,
+    why, pack, rebuild, dedupe, node, bin, search, upgrade-interactive, and stage commands for managing JavaScript
+    project dependencies and executing project scripts. Built on top of @yarnpkg/cli and the Clipanion command
+    framework.
+- aid: yarn-pkg:yarn-workspaces
+  name: Yarn Workspaces
+  tags:
+  - Workspaces
+  - Monorepo
+  - JavaScript
+  - Package Manager
+  humanURL: https://yarnpkg.com/features/workspaces
+  properties:
+  - url: https://yarnpkg.com/features/workspaces
+    type: Documentation
+  - url: https://yarnpkg.com/cli/workspaces/foreach
+    type: Documentation
+  - url: https://github.com/yarnpkg/berry/tree/master/packages/plugin-workspace-tools
+    type: SourceCode
+  - url: json-schema/yarn-pkg-workspace-schema.json
+    type: JSONSchema
+  description: Yarn was the first package manager built specifically around workspaces. `yarn workspace`,
+    `yarn workspaces foreach`, `yarn workspaces focus`, and `yarn workspaces list` provide first-class monorepo
+    coordination — running commands inside a specific workspace, fanning out commands across all workspaces,
+    installing a single workspace and its dependencies, and listing the workspace tree.
+- aid: yarn-pkg:yarn-plug-n-play
+  name: Yarn Plug'n'Play
+  tags:
+  - Plug'n'Play
+  - PnP
+  - Module Resolution
+  - JavaScript
+  humanURL: https://yarnpkg.com/features/pnp
+  properties:
+  - url: https://yarnpkg.com/features/pnp
+    type: Documentation
+  - url: https://github.com/yarnpkg/berry/tree/master/packages/yarnpkg-pnp
+    type: SourceCode
+  - url: https://github.com/yarnpkg/pnp-rs
+    type: SourceCode
+  description: Plug'n'Play (PnP) is Yarn's alternative to the traditional node_modules folder. Yarn generates a
+    single `.pnp.cjs` file containing the exact dependency tree which Node.js consults at runtime via a require
+    hook. PnP enables faster installs, deterministic module resolution, and strict boundaries between declared
+    and undeclared dependencies. A Rust implementation (pnp-rs) is available for non-Node runtimes.
+- aid: yarn-pkg:yarn-zero-installs
+  name: Yarn Zero-Installs
+  tags:
+  - Zero-Installs
+  - Reproducibility
+  - JavaScript
+  humanURL: https://yarnpkg.com/features/zero-installs
+  properties:
+  - url: https://yarnpkg.com/features/zero-installs
+    type: Documentation
+  description: Zero-Installs commit Yarn's package cache (`.yarn/cache`) into the repository alongside the
+    `.pnp.cjs` file. Clones of the repository can start working immediately without running `yarn install`,
+    enabling truly reproducible builds and instant CI bootstraps.
+- aid: yarn-pkg:yarn-constraints
+  name: Yarn Constraints
+  tags:
+  - Constraints
+  - Policy
+  - Prolog
+  - JavaScript
+  humanURL: https://yarnpkg.com/features/constraints
+  properties:
+  - url: https://yarnpkg.com/features/constraints
+    type: Documentation
+  - url: https://yarnpkg.com/cli/constraints
+    type: Documentation
+  - url: https://github.com/yarnpkg/berry/tree/master/packages/plugin-constraints
+    type: SourceCode
+  description: Yarn Constraints let you declare cross-workspace rules — required fields in `package.json`,
+    forbidden dependencies, version pinning, and consistency requirements — using a JavaScript or Prolog DSL.
+    `yarn constraints` validates the project; `yarn constraints --fix` applies automatic fixes. Foundational
+    for governed monorepos.
+- aid: yarn-pkg:yarn-protocols
+  name: Yarn Protocols
+  tags:
+  - Protocols
+  - Dependency Resolution
+  - JavaScript
+  humanURL: https://yarnpkg.com/protocol/npm
+  properties:
+  - url: https://yarnpkg.com/protocols
+    type: Documentation
+  - url: https://yarnpkg.com/protocol/npm
+    type: Documentation
+  - url: https://yarnpkg.com/protocol/git
+    type: Documentation
+  - url: https://yarnpkg.com/protocol/github
+    type: Documentation
+  - url: https://yarnpkg.com/protocol/file
+    type: Documentation
+  - url: https://yarnpkg.com/protocol/link
+    type: Documentation
+  - url: https://yarnpkg.com/protocol/portal
+    type: Documentation
+  - url: https://yarnpkg.com/protocol/patch
+    type: Documentation
+  - url: https://yarnpkg.com/protocol/exec
+    type: Documentation
+  - url: https://yarnpkg.com/protocol/workspace
+    type: Documentation
+  description: Yarn supports a rich set of dependency protocols beyond `npm:` semver — `git:`, `github:`,
+    `file:`, `link:`, `portal:`, `patch:`, `exec:`, `workspace:`, and `http(s):`. Protocols are pluggable so
+    custom resolvers can be added via plugins.
+- aid: yarn-pkg:yarn-plugin-api
+  name: Yarn Plugin API
+  tags:
+  - Plugins
+  - Extensibility
+  - JavaScript
+  - SDK
+  humanURL: https://yarnpkg.com/advanced/plugin-tutorial
+  properties:
+  - url: https://yarnpkg.com/advanced/plugin-tutorial
+    type: Documentation
+  - url: https://yarnpkg.com/api
+    type: Documentation
+  - url: https://github.com/yarnpkg/berry/tree/master/packages/yarnpkg-core
+    type: SourceCode
+  - url: https://yarnpkg.com/cli/plugin/import
+    type: Documentation
+  - url: https://yarnpkg.com/cli/plugin/list
+    type: Documentation
+  description: Yarn ships with a full plugin API exposed by `@yarnpkg/core`. Plugins can register commands,
+    resolvers, fetchers, linkers, and lifecycle hooks. Plugins are installed with `yarn plugin import` and
+    listed/verified with `yarn plugin list`, `yarn plugin check`, and `yarn plugin runtime`. The default
+    distribution bundles 20+ plugins including plugin-npm, plugin-pnp, plugin-workspace-tools,
+    plugin-constraints, plugin-typescript, plugin-interactive-tools, and plugin-stage.
+- aid: yarn-pkg:yarn-version
+  name: Yarn Version (Release Workflow)
+  tags:
+  - Versioning
+  - Release Management
+  - Monorepo
+  - JavaScript
+  humanURL: https://yarnpkg.com/features/release-workflow
+  properties:
+  - url: https://yarnpkg.com/features/release-workflow
+    type: Documentation
+  - url: https://yarnpkg.com/cli/version
+    type: Documentation
+  - url: https://yarnpkg.com/cli/version/apply
+    type: Documentation
+  - url: https://yarnpkg.com/cli/version/check
+    type: Documentation
+  description: Yarn provides a release-workflow primitive for monorepos. Contributors declare per-workspace
+    version bumps as deferred decisions (`yarn version check --interactive`) and the project applies them all
+    at release time (`yarn version apply`). Integrates with `yarn npm publish` for npm release pipelines.
+- aid: yarn-pkg:yarn-patch
+  name: Yarn Patch
+  tags:
+  - Patch
+  - Dependency Customization
+  - JavaScript
+  humanURL: https://yarnpkg.com/cli/patch
+  properties:
+  - url: https://yarnpkg.com/cli/patch
+    type: Documentation
+  - url: https://yarnpkg.com/cli/patch-commit
+    type: Documentation
+  description: First-class dependency patching — `yarn patch <package>` extracts a temporary editable copy of a
+    dependency and `yarn patch-commit` saves the resulting diff as a `patch:` protocol entry in the lockfile.
+    Eliminates the need for patch-package as a separate tool.
+- aid: yarn-pkg:yarn-dlx
+  name: Yarn DLX
+  tags:
+  - dlx
+  - Ephemeral Execution
+  - JavaScript
+  humanURL: https://yarnpkg.com/cli/dlx
+  properties:
+  - url: https://yarnpkg.com/cli/dlx
+    type: Documentation
+  description: The yarn dlx command runs a package in an isolated temporary environment without permanently
+    installing it. Yarn's equivalent of npx, used for one-shot tools, code generators, and bootstrap scripts.
+    Always pulls a fresh copy by default, preventing the stale-cache footguns of npx.
+name: Yarn
+tags:
+- Package Manager
+- JavaScript
+- Node.js
+- Monorepo
+- Workspaces
+- Plug'n'Play
+- Open Source
+- Berry
+- Yarn 4
+kind: contract
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: Open Source
+common:
+- url: https://yarnpkg.com
+  type: Portal
+- url: https://yarnpkg.com/getting-started
+  type: GettingStarted
+- url: https://yarnpkg.com/getting-started/install
+  type: Documentation
+- url: https://yarnpkg.com/cli
+  name: Yarn CLI Reference
+  type: Documentation
+- url: https://yarnpkg.com/api
+  name: Yarn Programmatic API
+  type: Documentation
+- url: https://yarnpkg.com/migration/guide
+  name: Migration Guide
+  type: Documentation
+- url: https://yarnpkg.com/features/workspaces
+  name: Workspaces
+  type: Documentation
+- url: https://yarnpkg.com/features/pnp
+  name: Plug'n'Play
+  type: Documentation
+- url: https://yarnpkg.com/features/zero-installs
+  name: Zero-Installs
+  type: Documentation
+- url: https://yarnpkg.com/features/constraints
+  name: Constraints
+  type: Documentation
+- url: https://yarnpkg.com/features/protocols
+  name: Protocols
+  type: Documentation
+- url: https://yarnpkg.com/features/plugins
+  name: Plugins
+  type: Documentation
+- url: https://yarnpkg.com/features/editor-sdks
+  name: Editor SDKs
+  type: Documentation
+- url: https://yarnpkg.com/configuration/yarnrc
+  name: .yarnrc.yml Reference
+  type: Documentation
+- url: https://yarnpkg.com/configuration/manifest
+  name: package.json Manifest
+  type: Documentation
+- url: https://github.com/yarnpkg/berry
+  name: yarnpkg/berry
+  type: SourceCode
+- url: https://github.com/yarnpkg/berry
+  name: Yarn GitHub Repo
+  type: GitHubOrganization
+- url: https://github.com/yarnpkg
+  name: yarnpkg
+  type: GitHubOrganization
+- url: https://github.com/yarnpkg/berry/blob/master/LICENSE.md
+  name: BSD-2-Clause License
+  type: License
+- url: https://github.com/yarnpkg/berry/blob/master/GOVERNANCE.md
+  name: Project Governance
+  type: Documentation
+- url: https://github.com/yarnpkg/berry/blob/master/CONTRIBUTING.md
+  name: Contributing Guide
+  type: Documentation
+- url: https://github.com/yarnpkg/berry/blob/master/CODE_OF_CONDUCT.md
+  name: Code of Conduct
+  type: CodeOfConduct
+- url: https://github.com/yarnpkg/berry/releases
+  name: Releases
+  type: ChangeLog
+- url: https://github.com/yarnpkg/rfcs
+  name: Yarn RFCs
+  type: Documentation
+- url: https://discord.gg/yarnpkg
+  name: Discord
+  type: Forum
+- url: https://opencollective.com/yarnpkg
+  name: Open Collective
+  type: Funding
+- url: https://github.com/yarnpkg/setup-action
+  name: setup-action
+  type: GitHubAction
+- url: https://www.npmjs.com/package/yarn
+  name: yarn on npm
+  type: Package
+- url: https://www.npmjs.com/package/@yarnpkg/core
+  name: '@yarnpkg/core'
+  type: Package
+- url: https://www.npmjs.com/package/@yarnpkg/cli
+  name: '@yarnpkg/cli'
+  type: Package
+- url: https://www.npmjs.com/package/@yarnpkg/pnp
+  name: '@yarnpkg/pnp'
+  type: Package
+- url: https://www.npmjs.com/package/@yarnpkg/fslib
+  name: '@yarnpkg/fslib'
+  type: Package
+- url: https://www.npmjs.com/package/@yarnpkg/shell
+  name: '@yarnpkg/shell'
+  type: Package
+- url: https://www.npmjs.com/package/@yarnpkg/sdks
+  name: '@yarnpkg/sdks'
+  type: SDK
+- url: https://github.com/yarnpkg/berry/tree/master/packages
+  name: Monorepo Packages
+  type: SourceCode
+- type: Features
+  data:
+  - Yarn 4 (Berry) — TypeScript rewrite of the Yarn package manager, fully independent open-source project
+  - Workspaces — first-class monorepo support with `yarn workspace`, `yarn workspaces foreach`, and
+    `yarn workspaces focus`
+  - Plug'n'Play (PnP) — node_modules-free dependency resolution via a single `.pnp.cjs` manifest plus a Rust
+    implementation (pnp-rs)
+  - Zero-Installs — commit the cache so clones bootstrap with no `yarn install` step
+  - Constraints — JavaScript and Prolog DSL for cross-workspace policy enforcement
+  - Protocols — npm, git, github, file, link, portal, patch, exec, workspace, and http(s) dependency sources
+  - Plugin system — extensible commands, resolvers, fetchers, and linkers via `@yarnpkg/core`
+  - 20+ bundled plugins including plugin-npm, plugin-pnp, plugin-workspace-tools, plugin-constraints,
+    plugin-typescript, and plugin-interactive-tools
+  - First-class dependency patching with yarn patch and yarn patch-commit, no extra tooling required
+  - Yarn dlx — safe ephemeral package execution as a drop-in replacement for npx
+  - Yarn up — project-wide dependency upgrades across all workspaces
+  - Yarn dedupe — collapse overlapping semver ranges into the fewest possible resolutions
+  - Yarn version — release workflow with deferred per-workspace version decisions
+  - Yarn npm publish and yarn npm login for npm registry publishing
+  - Yarn npm audit for vulnerability scanning
+  - Corepack integration — projects pin their Yarn version via the packageManager field in package.json
+  - Yarn set version stable upgrades the per-project Yarn binary
+  - Configuration via .yarnrc.yml with checked-in defaults
+  - Editor SDKs (@yarnpkg/sdks) for VS Code, Vim, and other editors to integrate with PnP
+  - Portable @yarnpkg/shell interpreter so scripts in package.json work identically on every OS
+  - BSD-2-Clause license, governed by a community contributor model independent of any single company
+  sources:
+  - https://yarnpkg.com
+  - https://yarnpkg.com/getting-started
+  - https://yarnpkg.com/cli
+  - https://github.com/yarnpkg/berry
+  - https://yarnpkg.com/features/workspaces
+  - https://yarnpkg.com/features/pnp
+  - https://yarnpkg.com/features/zero-installs
+  - https://yarnpkg.com/features/constraints
+  updated: '2026-05-25'
+created: '2026-05-25T00:00:00.000Z'
+modified: '2026-05-25'
+position: Consuming
+description: Yarn is an open-source JavaScript package manager and project manager originally created at Facebook
+  in 2016 and now developed as a fully independent community project (Yarn Berry, currently v4) on
+  github.com/yarnpkg/berry. Yarn was the first package manager designed around workspaces and introduced
+  Plug'n'Play (a node_modules-free module resolution strategy), Zero-Installs (committable caches for instant
+  clones), Constraints (a cross-workspace policy DSL), and a rich protocol system covering npm, git, github,
+  file, link, portal, patch, exec, and workspace dependencies. It is distributed via Corepack and licensed
+  under BSD-2-Clause.
+maintainers:
+- FN: Yarn Contributors
+  email: info@apievangelist.com
+  url: https://yarnpkg.com
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
+specificationVersion: '0.16'

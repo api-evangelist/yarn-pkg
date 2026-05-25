@@ -1,0 +1,202 @@
+name: Yarn Vocabulary
+version: '0.1'
+aid: yarn-pkg
+description: |
+  Canonical vocabulary for the Yarn JavaScript package manager (Yarn Berry / v4).
+  Captures the terms developers encounter when working with Yarn — manifests,
+  workspaces, lockfiles, protocols, PnP, constraints, plugins, and the release
+  workflow — so the catalog can speak about Yarn precisely and consistently.
+
+terms:
+
+  # Core concepts
+  - term: Project
+    definition: 'A directory containing a `package.json` manifest and a `.yarnrc.yml` configuration file managed by Yarn. May contain one or more workspaces.'
+    type: Concept
+
+  - term: Workspace
+    definition: 'A package inside a Yarn project, declared via the `workspaces` field in the root `package.json`. The root itself is also a workspace.'
+    type: Concept
+
+  - term: Monorepo
+    definition: 'A repository that contains multiple workspaces managed together by Yarn.'
+    type: Concept
+
+  - term: Manifest
+    definition: 'The `package.json` file describing a workspace name, version, dependencies, scripts, and Yarn-specific fields such as `packageManager`.'
+    type: File
+
+  - term: Lockfile
+    definition: 'The `yarn.lock` file that pins every resolved package to a specific version and integrity hash. Text-based and human-readable.'
+    type: File
+
+  - term: .yarnrc.yml
+    definition: 'The Yarn configuration file in the project root that controls plugins, the active Yarn version, registries, and behavior toggles.'
+    type: File
+
+  - term: packageManager field
+    definition: 'The `package.json` field (e.g. `"packageManager": "yarn@4.x.y"`) that pins which Yarn version Corepack should use for the project.'
+    type: Field
+
+  # Installation strategies
+  - term: Plug-n-Play
+    definition: 'Yarn default installation strategy. Generates a single `.pnp.cjs` manifest that Node.js consults at runtime via a require hook, eliminating the `node_modules` folder.'
+    aliases:
+    - PnP
+    type: Strategy
+
+  - term: node-modules linker
+    definition: 'An alternative installation strategy that produces a traditional `node_modules` directory. Enabled by setting `nodeLinker` to `node-modules` in `.yarnrc.yml`.'
+    type: Strategy
+
+  - term: Zero-Installs
+    definition: 'A workflow in which the Yarn cache (`.yarn/cache`) is committed to version control alongside the `.pnp.cjs` file, allowing clones of the repository to skip `yarn install` entirely.'
+    type: Workflow
+
+  # Protocols
+  - term: npm protocol
+    definition: 'The default `npm:` protocol resolving dependencies against an npm-compatible registry using semver ranges.'
+    type: Protocol
+
+  - term: git protocol
+    definition: 'The `git:` protocol resolving dependencies from a Git repository URL.'
+    type: Protocol
+
+  - term: github protocol
+    definition: 'The `github:` protocol resolving dependencies from a GitHub owner/repo reference.'
+    type: Protocol
+
+  - term: file protocol
+    definition: 'The `file:` protocol resolving a dependency from a local directory copy.'
+    type: Protocol
+
+  - term: link protocol
+    definition: 'The `link:` protocol resolving a dependency from a local directory using a filesystem link (no copy, no install).'
+    type: Protocol
+
+  - term: portal protocol
+    definition: 'The `portal:` protocol resolving a dependency from a local directory and respecting its own dependencies (unlike `link:`).'
+    type: Protocol
+
+  - term: patch protocol
+    definition: 'The `patch:` protocol applying a saved patch file on top of a base dependency. Produced by `yarn patch` and `yarn patch-commit`.'
+    type: Protocol
+
+  - term: exec protocol
+    definition: 'The `exec:` protocol running a generator script to produce the dependency on demand.'
+    type: Protocol
+
+  - term: workspace protocol
+    definition: 'The `workspace:` protocol resolving a dependency to a sibling workspace within the same monorepo.'
+    type: Protocol
+
+  # Commands
+  - term: yarn install
+    definition: 'Resolve and install all project dependencies.'
+    type: Command
+
+  - term: yarn add
+    definition: 'Add one or more new dependencies to the active workspace.'
+    type: Command
+
+  - term: yarn remove
+    definition: 'Remove one or more dependencies from the active workspace.'
+    type: Command
+
+  - term: yarn up
+    definition: 'Upgrade dependencies project-wide across all workspaces.'
+    type: Command
+
+  - term: yarn dedupe
+    definition: 'Collapse overlapping semver ranges into the fewest possible resolutions.'
+    type: Command
+
+  - term: yarn run
+    definition: 'Execute a script defined in the `package.json` `scripts` field.'
+    type: Command
+
+  - term: yarn exec
+    definition: 'Run a shell command using Yarn portable shell interpreter.'
+    type: Command
+
+  - term: yarn dlx
+    definition: 'Run a package in an isolated, ephemeral environment without permanently installing it. Yarn npx replacement.'
+    type: Command
+
+  - term: yarn workspace
+    definition: 'Execute a command within the context of a specific named workspace.'
+    type: Command
+
+  - term: yarn workspaces foreach
+    definition: 'Execute a command across every workspace in the project, with topological ordering and parallelism controls.'
+    type: Command
+
+  - term: yarn workspaces focus
+    definition: 'Install only a single workspace and its transitive dependencies — useful for Docker builds and CI.'
+    type: Command
+
+  - term: yarn constraints
+    definition: 'Validate or apply project-wide constraint rules defined in `yarn.config.cjs` or `constraints.pro`.'
+    type: Command
+
+  - term: yarn patch
+    definition: 'Extract a temporary editable copy of an installed dependency for modification.'
+    type: Command
+
+  - term: yarn patch-commit
+    definition: 'Save the diff of a patched dependency into the project as a `patch:` protocol entry.'
+    type: Command
+
+  - term: yarn npm publish
+    definition: 'Publish the active workspace to the configured npm registry.'
+    type: Command
+
+  - term: yarn npm audit
+    definition: 'Audit the project against the npm registry vulnerability database.'
+    type: Command
+
+  - term: yarn plugin import
+    definition: 'Install a Yarn plugin from a URL or known plugin name.'
+    type: Command
+
+  - term: yarn set version
+    definition: 'Pin the project Yarn binary to a specific version.'
+    type: Command
+
+  - term: yarn version
+    definition: 'Declare a deferred per-workspace version bump as part of the release workflow.'
+    type: Command
+
+  # Extension
+  - term: Plugin
+    definition: 'A JavaScript module loaded by Yarn that can register commands, resolvers, fetchers, linkers, and lifecycle hooks via the `@yarnpkg/core` API.'
+    type: Concept
+
+  - term: Resolver
+    definition: 'A plugin extension point that turns a dependency descriptor (e.g. lodash@^4) into a concrete locator.'
+    type: Concept
+
+  - term: Fetcher
+    definition: 'A plugin extension point that downloads a resolved locator into Yarn cache.'
+    type: Concept
+
+  - term: Linker
+    definition: 'A plugin extension point that materializes resolved packages into a project (PnP, node-modules, or custom).'
+    type: Concept
+
+  - term: Constraint
+    definition: 'A declarative rule defined in `yarn.config.cjs` (JavaScript) or `constraints.pro` (Prolog) that enforces cross-workspace policies.'
+    type: Concept
+
+  # Operational
+  - term: Corepack
+    definition: 'The Node.js-bundled tool that downloads and pins package manager versions per project. Recommended way to install and use Yarn 4.'
+    type: Tool
+
+  - term: Editor SDKs
+    definition: 'TypeScript and ESLint integration files generated by `@yarnpkg/sdks` so editors can resolve modules through PnP.'
+    type: Tool
+
+  - term: Release Workflow
+    definition: 'Yarn deferred-decision release model — contributors record per-workspace version bumps over time and `yarn version apply` consolidates them at release.'
+    type: Workflow

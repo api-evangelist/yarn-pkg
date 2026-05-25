@@ -1,0 +1,139 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "yarn": "https://yarnpkg.com/vocab#",
+    "schema": "https://schema.org/",
+    "spdx": "http://spdx.org/rdf/terms#",
+
+    "Project": "yarn:Project",
+    "Workspace": "yarn:Workspace",
+    "Manifest": "yarn:Manifest",
+    "Lockfile": "yarn:Lockfile",
+    "Plugin": "yarn:Plugin",
+    "Resolver": "yarn:Resolver",
+    "Fetcher": "yarn:Fetcher",
+    "Linker": "yarn:Linker",
+    "Constraint": "yarn:Constraint",
+    "Protocol": "yarn:Protocol",
+    "PnP": "yarn:PlugAndPlay",
+    "ZeroInstalls": "yarn:ZeroInstalls",
+    "ReleaseWorkflow": "yarn:ReleaseWorkflow",
+
+    "name": "schema:name",
+    "version": "schema:version",
+    "description": "schema:description",
+    "license": {
+      "@id": "spdx:licenseId",
+      "@type": "@id"
+    },
+    "homepage": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "repository": {
+      "@id": "schema:codeRepository",
+      "@type": "@id"
+    },
+    "author": "schema:author",
+    "maintainer": "schema:maintainer",
+    "dependsOn": {
+      "@id": "yarn:dependsOn",
+      "@type": "@id"
+    },
+    "devDependsOn": {
+      "@id": "yarn:devDependsOn",
+      "@type": "@id"
+    },
+    "peerDependsOn": {
+      "@id": "yarn:peerDependsOn",
+      "@type": "@id"
+    },
+    "workspaces": {
+      "@id": "yarn:workspaces",
+      "@container": "@set"
+    },
+    "scripts": {
+      "@id": "yarn:scripts",
+      "@container": "@index"
+    },
+    "packageManager": "yarn:packageManager",
+
+    "protocol": "yarn:protocol",
+    "locator": "yarn:locator",
+    "descriptor": "yarn:descriptor",
+    "resolutions": {
+      "@id": "yarn:resolutions",
+      "@container": "@index"
+    },
+
+    "linker": "yarn:linker",
+    "nodeLinker": "yarn:nodeLinker",
+    "cacheFolder": "yarn:cacheFolder",
+    "yarnPath": "yarn:yarnPath",
+
+    "command": "yarn:command",
+    "appliesTo": {
+      "@id": "yarn:appliesTo",
+      "@type": "@id"
+    },
+    "constraintRule": "yarn:constraintRule",
+    "constraintLanguage": "yarn:constraintLanguage"
+  },
+
+  "@graph": [
+    {
+      "@id": "yarn:protocol/npm",
+      "@type": "Protocol",
+      "name": "npm",
+      "description": "Resolve dependencies from an npm-compatible registry using semver ranges."
+    },
+    {
+      "@id": "yarn:protocol/git",
+      "@type": "Protocol",
+      "name": "git",
+      "description": "Resolve dependencies from a Git repository URL."
+    },
+    {
+      "@id": "yarn:protocol/github",
+      "@type": "Protocol",
+      "name": "github",
+      "description": "Resolve dependencies from a GitHub owner/repo reference."
+    },
+    {
+      "@id": "yarn:protocol/file",
+      "@type": "Protocol",
+      "name": "file",
+      "description": "Resolve a dependency from a local directory copy."
+    },
+    {
+      "@id": "yarn:protocol/link",
+      "@type": "Protocol",
+      "name": "link",
+      "description": "Resolve a dependency from a local directory via a filesystem link, ignoring its own dependencies."
+    },
+    {
+      "@id": "yarn:protocol/portal",
+      "@type": "Protocol",
+      "name": "portal",
+      "description": "Resolve a dependency from a local directory, respecting its own dependencies."
+    },
+    {
+      "@id": "yarn:protocol/patch",
+      "@type": "Protocol",
+      "name": "patch",
+      "description": "Apply a saved patch on top of a base dependency."
+    },
+    {
+      "@id": "yarn:protocol/exec",
+      "@type": "Protocol",
+      "name": "exec",
+      "description": "Run a generator script to produce the dependency on demand."
+    },
+    {
+      "@id": "yarn:protocol/workspace",
+      "@type": "Protocol",
+      "name": "workspace",
+      "description": "Resolve a dependency to a sibling workspace within the same monorepo."
+    }
+  ]
+}

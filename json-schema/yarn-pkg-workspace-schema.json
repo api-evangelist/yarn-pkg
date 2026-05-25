@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/yarn-pkg/main/json-schema/yarn-pkg-workspace-schema.json",
+  "title": "Yarn Workspace package.json",
+  "description": "JSON Schema describing a Yarn (Berry / v4) workspace manifest — the subset of package.json fields that Yarn reads, including Yarn-specific extensions like `workspaces`, `packageManager`, `resolutions`, `dependenciesMeta`, and `peerDependenciesMeta`.",
+  "type": "object",
+  "required": ["name"],
+  "additionalProperties": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The package name. For a monorepo root this may be omitted in favor of `private: true`."
+    },
+    "version": {
+      "type": "string",
+      "description": "Semver version of the workspace."
+    },
+    "private": {
+      "type": "boolean",
+      "description": "If true, the workspace cannot be published. Required on the monorepo root."
+    },
+    "description": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX license identifier."
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "repository": {
+      "oneOf": [
+        {"type": "string"},
+        {
+          "type": "object",
+          "properties": {
+            "type": {"type": "string"},
+            "url": {"type": "string", "format": "uri"},
+            "directory": {"type": "string"}
+          }
+        }
+      ]
+    },
+    "packageManager": {
+      "type": "string",
+      "pattern": "^yarn@",
+      "description": "Corepack pinning field. Example: `yarn@4.5.0`."
+    },
+    "workspaces": {
+      "description": "Glob patterns identifying child workspaces, or an object form with `packages` and `nohoist`.",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        {
+          "type": "object",
+          "properties": {
+            "packages": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "nohoist": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        }
+      ]
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": {"type": "string"},
+      "description": "Runtime dependencies. Values may use any supported Yarn protocol."
+    },
+    "devDependencies": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
+    "peerDependencies": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
+    "optionalDependencies": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
+    "bundleDependencies": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "resolutions": {
+      "type": "object",
+      "additionalProperties": {"type": "string"},
+      "description": "Forced resolutions overriding the normal dependency graph. Yarn-only; honored project-wide from the root manifest."
+    },
+    "dependenciesMeta": {
+      "type": "object",
+      "description": "Per-dependency metadata.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "built": {"type": "boolean"},
+          "optional": {"type": "boolean"},
+          "unplugged": {"type": "boolean"}
+        }
+      }
+    },
+    "peerDependenciesMeta": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "optional": {"type": "boolean"}
+        }
+      }
+    },
+    "scripts": {
+      "type": "object",
+      "additionalProperties": {"type": "string"},
+      "description": "Project scripts executed by `yarn run` via the portable @yarnpkg/shell interpreter."
+    },
+    "bin": {
+      "oneOf": [
+        {"type": "string"},
+        {
+          "type": "object",
+          "additionalProperties": {"type": "string"}
+        }
+      ]
+    },
+    "engines": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
+    "publishConfig": {
+      "type": "object",
+      "description": "Fields applied at publish time only.",
+      "properties": {
+        "access": {"type": "string", "enum": ["public", "restricted"]},
+        "registry": {"type": "string", "format": "uri"},
+        "main": {"type": "string"},
+        "module": {"type": "string"},
+        "types": {"type": "string"},
+        "bin": {
+          "oneOf": [
+            {"type": "string"},
+            {
+              "type": "object",
+              "additionalProperties": {"type": "string"}
+            }
+          ]
+        }
+      }
+    },
+    "installConfig": {
+      "type": "object",
+      "properties": {
+        "hoistingLimits": {
+          "type": "string",
+          "enum": ["workspaces", "dependencies", "none"]
+        },
+        "selfReferences": {"type": "boolean"}
+      }
+    },
+    "languageName": {
+      "type": "string",
+      "description": "Yarn linker language. Most workspaces use `node`."
+    }
+  }
+}
