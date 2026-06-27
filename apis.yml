@@ -288,7 +288,7 @@ common:
   type: Documentation
 - url: https://discord.gg/yarnpkg
   name: Discord
-  type: Forum
+  type: Forums
 - url: https://opencollective.com/yarnpkg
   name: Open Collective
   type: Funding
@@ -315,7 +315,7 @@ common:
   type: Package
 - url: https://www.npmjs.com/package/@yarnpkg/sdks
   name: '@yarnpkg/sdks'
-  type: SDK
+  type: SDKs
 - url: https://github.com/yarnpkg/berry/tree/master/packages
   name: Monorepo Packages
   type: SourceCode
