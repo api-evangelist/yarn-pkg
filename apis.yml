@@ -217,6 +217,8 @@ kind: contract
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: Open Source
 common:
+- type: DomainSecurity
+  url: security/yarn-pkg-domain-security.yml
 - url: https://yarnpkg.com
   type: Portal
 - url: https://yarnpkg.com/getting-started
