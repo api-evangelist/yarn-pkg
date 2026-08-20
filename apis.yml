@@ -177,6 +177,9 @@ apis:
 - aid: yarn-pkg:yarn-patch
   name: Yarn Patch
   tags:
+  - Dependency Customization
+  - JavaScript
+  tags_raw:
   - Patch
   - Dependency Customization
   - JavaScript
@@ -204,6 +207,16 @@ apis:
     Always pulls a fresh copy by default, preventing the stale-cache footguns of npx.
 name: Yarn
 tags:
+- Package Manager
+- JavaScript
+- Node.js
+- Monorepo
+- Workspaces
+- Plug'n'Play
+- Open-Source
+- Berry
+- Yarn 4
+tags_raw:
 - Package Manager
 - JavaScript
 - Node.js
