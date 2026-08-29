@@ -227,6 +227,18 @@ tags_raw:
 - Berry
 - Yarn 4
 kind: contract
+deliveryModel:
+  model: library
+  license: BSD-2-Clause License
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Library · distributed through package registries, no callable service
+  confidence: low
+  source:
+  - license
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
