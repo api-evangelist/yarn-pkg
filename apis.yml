@@ -253,6 +253,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/yarn-pkg.png
 access: Open Source
 common:
+- type: Website
+  url: https://www.yarnpkg.com/
 - type: DomainSecurity
   url: security/yarn-pkg-domain-security.yml
 - url: https://yarnpkg.com
