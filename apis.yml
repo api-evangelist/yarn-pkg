@@ -8,6 +8,12 @@ apis:
   - Package Manager
   - JavaScript
   - Node.js
+  - Workspace
+  tags_raw:
+  - CLI
+  - Package Manager
+  - JavaScript
+  - Node.js
   - Workspaces
   humanURL: https://yarnpkg.com/cli
   properties:
@@ -30,6 +36,11 @@ apis:
 - aid: yarn-pkg:yarn-workspaces
   name: Yarn Workspaces
   tags:
+  - Workspace
+  - Monorepo
+  - JavaScript
+  - Package Manager
+  tags_raw:
   - Workspaces
   - Monorepo
   - JavaScript
@@ -102,6 +113,10 @@ apis:
 - aid: yarn-pkg:yarn-protocols
   name: Yarn Protocols
   tags:
+  - Protocol
+  - Dependency Resolution
+  - JavaScript
+  tags_raw:
   - Protocols
   - Dependency Resolution
   - JavaScript
@@ -211,7 +226,7 @@ tags:
 - JavaScript
 - Node.js
 - Monorepo
-- Workspaces
+- Workspace
 - Plug'n'Play
 - Open-Source
 - Berry
