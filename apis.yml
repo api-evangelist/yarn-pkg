@@ -228,7 +228,7 @@ tags:
 - Monorepo
 - Workspace
 - Plug'n'Play
-- Open-Source
+- Open Source
 - Berry
 - Yarn 4
 tags_raw:
@@ -241,6 +241,7 @@ tags_raw:
 - Open Source
 - Berry
 - Yarn 4
+- Open-Source
 kind: contract
 deliveryModel:
   model: library
