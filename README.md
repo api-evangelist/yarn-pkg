@@ -64,78 +64,120 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Yarn is an open-source JavaScript package manager and project manager. Originally created at Facebook in 2016, Yarn is now a fully independent community-governed project. The current generation — Yarn Berry, currently v4 — lives at [yarnpkg/berry](https://github.com/yarnpkg/berry) and is written in TypeScript under the BSD-2-Clause license.
+Yarn is an open-source JavaScript package manager and project manager originally created at Facebook in 2016 and now developed as a fully independent community project (Yarn Berry, currently v4) on github.com/yarnpkg/berry. Yarn was the first package manager designed around workspaces and introduced Plug'n'Play (a node_modules-free module resolution strategy), Zero-Installs (committable caches for instant clones), Constraints (a cross-workspace policy DSL), and a rich protocol system covering npm, git, github, file, link, portal, patch, exec, and workspace dependencies. It is distributed via Corepack and licensed under BSD-2-Clause.
 
-Yarn was the first package manager designed specifically around workspaces and introduced Plug'n'Play (a node_modules-free module resolution strategy), Zero-Installs (committable caches for instant clones), Constraints (a cross-workspace policy DSL), a rich protocol system, and a first-class plugin API.
+**Areas:** Package Manager · JavaScript · Node.js · Monorepo · Workspace · Plug'n'Play · Open Source · Berry · Yarn 4
 
-This repository is the API Evangelist catalog entry for Yarn. It captures the Yarn surface area in `apis.yml` along with supporting artifacts.
+## Yarn on APIs.io
 
-## Surfaces Profiled
+Everything profiled for Yarn is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/yarn-pkg/](https://apis.io/providers/yarn-pkg/)** — or go straight to one of the APIs or properties below.
 
-- **Yarn CLI** — `yarn install`, `add`, `remove`, `up`, `run`, `exec`, `dlx`, `info`, `why`, `pack`, `rebuild`, `dedupe`, `node`, `bin`, `search`, `upgrade-interactive`, `stage`
-- **Yarn Workspaces** — `yarn workspace`, `yarn workspaces foreach`, `yarn workspaces focus`, `yarn workspaces list`
-- **Yarn Plug'n'Play (PnP)** — node_modules-free dependency resolution via a single `.pnp.cjs` manifest, plus a Rust implementation (`pnp-rs`)
-- **Yarn Zero-Installs** — commit the cache so clones bootstrap with no `yarn install`
-- **Yarn Constraints** — JavaScript and Prolog DSL for cross-workspace policy enforcement
-- **Yarn Protocols** — `npm:`, `git:`, `github:`, `file:`, `link:`, `portal:`, `patch:`, `exec:`, `workspace:`, and `http(s):`
-- **Yarn Plugin API** — register commands, resolvers, fetchers, linkers, and lifecycle hooks via `@yarnpkg/core`
-- **Yarn Version (Release Workflow)** — deferred per-workspace version decisions applied at release time
-- **Yarn Patch** — `yarn patch` / `yarn patch-commit` for first-class dependency patching
-- **Yarn DLX** — ephemeral package execution (Yarn's npx replacement)
+### APIs (10)
 
-## Key Properties
+- [Yarn CLI](https://apis.io/apis/yarn-pkg/yarn-cli/) — The Yarn command-line interface — `yarn` — provides install, add, remove, up, run, exec, dlx, info, why, pack, rebuild, dedupe, node, bin, search,…
+- [Yarn Workspaces](https://apis.io/apis/yarn-pkg/yarn-workspaces/) — Yarn was the first package manager built specifically around workspaces. `yarn workspace`, `yarn workspaces foreach`, `yarn workspaces focus`, and `yarn…
+- [Yarn Plug'n'Play](https://apis.io/apis/yarn-pkg/yarn-plug-n-play/) — Plug'n'Play (PnP) is Yarn's alternative to the traditional node_modules folder. Yarn generates a single `.pnp.cjs` file containing the exact dependency tree…
+- [Yarn Zero-Installs](https://apis.io/apis/yarn-pkg/yarn-zero-installs/) — Zero-Installs commit Yarn's package cache (`.yarn/cache`) into the repository alongside the `.pnp.cjs` file. Clones of the repository can start working…
+- [Yarn Constraints](https://apis.io/apis/yarn-pkg/yarn-constraints/) — Yarn Constraints let you declare cross-workspace rules — required fields in `package.json`, forbidden dependencies, version pinning, and consistency…
+- [Yarn Protocols](https://apis.io/apis/yarn-pkg/yarn-protocols/) — Yarn supports a rich set of dependency protocols beyond `npm:` semver — `git:`, `github:`, `file:`, `link:`, `portal:`, `patch:`, `exec:`, `workspace:`, and…
+- [Yarn Plugin API](https://apis.io/apis/yarn-pkg/yarn-plugin-api/) — Yarn ships with a full plugin API exposed by `@yarnpkg/core`. Plugins can register commands, resolvers, fetchers, linkers, and lifecycle hooks. Plugins are…
+- [Yarn Version (Release Workflow)](https://apis.io/apis/yarn-pkg/yarn-version/) — Yarn provides a release-workflow primitive for monorepos. Contributors declare per-workspace version bumps as deferred decisions (`yarn version check…
+- [Yarn Patch](https://apis.io/apis/yarn-pkg/yarn-patch/) — First-class dependency patching — `yarn patch <package>` extracts a temporary editable copy of a dependency and `yarn patch-commit` saves the resulting diff…
+- [Yarn DLX](https://apis.io/apis/yarn-pkg/yarn-dlx/) — The yarn dlx command runs a package in an isolated temporary environment without permanently installing it. Yarn's equivalent of npx, used for one-shot…
 
-- **License:** BSD-2-Clause
-- **Governance:** independent community project, GOVERNANCE.md in `yarnpkg/berry`
-- **Language:** TypeScript (~85%), with Rust for `pnp-rs`
-- **Distribution:** Corepack (recommended), or `npm install -g yarn`
-- **Pin to project:** the `packageManager` field in `package.json`, or `yarn set version stable`
-- **Configuration:** `.yarnrc.yml`
-- **Manifest:** `package.json`
-- **Lockfile:** `yarn.lock` (text-based, deterministic)
+### Published properties
 
-## Ecosystem Packages
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Package | Purpose |
+#### JSON Schema (1)
+
+The data models the API reads and writes.
+
+- [Yarn Workspace package.json](https://apis.io/schemas/yarn-pkg/yarn-pkg-workspace/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Yarn Pkg Context](https://apis.io/jsonld/yarn-pkg/yarn-pkg-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Yarn Vocabulary](https://apis.io/vocabularies/yarn-pkg/yarn-pkg-vocabulary/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Yarn — jsonschema rules](https://apis.io/rules/yarn-pkg/yarn-pkg-jsonschema-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Yarn Pkg Domain Security](https://apis.io/security/yarn-pkg/yarn-pkg-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.yarnpkg.com/)
+- [Documentation](https://yarnpkg.com/getting-started/install)
+- [Getting started](https://yarnpkg.com/getting-started)
+- [Changelog](https://github.com/yarnpkg/berry/releases)
+- [GitHub](https://github.com/yarnpkg/berry)
+
+## API Evangelist rating
+
+**Kin Score 25.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| `@yarnpkg/core` | Programmatic API used by the CLI and plugins |
-| `@yarnpkg/cli` | Command-line interface built on `@yarnpkg/core` |
-| `@yarnpkg/pnp` | Plug'n'Play hook generation |
-| `@yarnpkg/fslib` | Type-safe filesystem abstraction |
-| `@yarnpkg/shell` | Portable bash-like shell interpreter for `package.json` scripts |
-| `@yarnpkg/sdks` | Editor SDKs (VS Code, Vim, etc.) for PnP integration |
+| Discoverability | 62.5 |
+| Contract quality | 21.9 |
+| Contract governance | 23.5 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 42.9 |
+| Access clarity | 0.0 |
 
-## Default Plugins (selected)
+**Agent readiness 0.0** — human-only
 
-- `plugin-npm` — npm registry resolution
-- `plugin-pnp` — Plug'n'Play installation
-- `plugin-workspace-tools` — monorepo coordination
-- `plugin-npm-cli` — `yarn npm publish` / login / audit / tag / whoami
-- `plugin-constraints` — `yarn constraints` enforcement
-- `plugin-typescript` — automatic `@types/*` co-installation
-- `plugin-interactive-tools` — `yarn upgrade-interactive`, `yarn search`
-- `plugin-stage` — stage Yarn files to version control
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-## Artifacts
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
 
-- [`apis.yml`](apis.yml) — APIs.json v0.16 catalog entry
-- [`vocabulary/yarn-pkg-vocabulary.yml`](vocabulary/yarn-pkg-vocabulary.yml) — Yarn vocabulary
-- [`json-ld/yarn-pkg-context.jsonld`](json-ld/yarn-pkg-context.jsonld) — JSON-LD context for Yarn concepts
-- [`json-schema/yarn-pkg-workspace-schema.json`](json-schema/yarn-pkg-workspace-schema.json) — JSON Schema for a Yarn workspace `package.json`
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/yarn-pkg/](https://apis.io/providers/yarn-pkg/).
 
-## References
+## How this profile is made
 
-- Homepage: <https://yarnpkg.com>
-- Getting started: <https://yarnpkg.com/getting-started>
-- Install: <https://yarnpkg.com/getting-started/install>
-- CLI reference: <https://yarnpkg.com/cli>
-- Programmatic API: <https://yarnpkg.com/api>
-- Migration guide: <https://yarnpkg.com/migration/guide>
-- GitHub: <https://github.com/yarnpkg/berry>
-- RFCs: <https://github.com/yarnpkg/rfcs>
-- Discord: <https://discord.gg/yarnpkg>
-- Open Collective: <https://opencollective.com/yarnpkg>
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-## License
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Yarn: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-This catalog entry's content is published under the API Evangelist editorial license. Yarn itself is licensed under [BSD-2-Clause](https://github.com/yarnpkg/berry/blob/master/LICENSE.md).
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/yarn-pkg/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
